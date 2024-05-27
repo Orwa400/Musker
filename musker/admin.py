@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.models import Group, User
-from .models import Profile
+from .models import Profile, Meep
 
 
 # Unregister Groups
@@ -22,4 +22,6 @@ class UserAdmin(admin.ModelAdmin):
 admin.site.unregister(User)
 # Register User
 admin.site.register(User, UserAdmin)
+# Register meeps
+admin.site.register(Meep)
 
