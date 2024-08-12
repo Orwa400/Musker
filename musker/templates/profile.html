@@ -39,6 +39,9 @@
                                 {% else %}
                                 <a href="{% url 'meep_like' meep.id %}"><i class="fa fa-heart-o" style="color:red"></i></a>
                                 {% endif %}
+
+                                &nbsp;&nbsp;&nbsp;
+                                <a href="{% url 'meep_share' meep.id %}"><i class="fa-solid fa-share" style="color:blue"></i></a>
                                 
                             </small>
                         </div><br><br>
