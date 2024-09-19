@@ -201,3 +201,16 @@ def meep_share(request, pk):
         messsages.success(request, ("That Meep DOes Not Exist..."))
         return redirect('home')
 
+def delete_meep(request, pk):
+    if request.user.is_authenticated:
+        meep = get_object_or_404(Meep, id=pk)
+        # Check to see If you own the meep
+        if request.user.username == meep.user.username:
+            meep.delete()
+            messages.success(request, ("The Meep Has Been Deleted"))
+            return redirect(request.META.get("HTTP_REFERER"))
+        else:
+                messages.succes(request, ("You Do Not Own That Meep"))
+    else:
+        messages.success(request, ("Please Log In To Continue.."))
+        return redirect(request.META.get("HTTP_REFERER"))
