@@ -217,8 +217,8 @@ def delete_meep(request, pk):
 
 def edit_meep(request, pk):
     if request.user.is_authenticated:
+        meep = get_object_or_404(Meep, id=pk)
         if request.user.username == meep.user.username:
-            meep = get_object_or_404(Meep, id=pk)
             form = MeepForm(request.POST or None, instance=meep)
             if request.method == "POST":
                 if form.is_valid():
